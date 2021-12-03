@@ -25,8 +25,7 @@ const io = new Server(server, {
 });
 
 instrument(io, {
-    auth: false,
-    '': ''
+    auth: false
 });
 
 function publicRooms() {
