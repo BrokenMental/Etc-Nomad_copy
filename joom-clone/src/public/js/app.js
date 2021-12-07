@@ -35,16 +35,19 @@ async function getCameras() {
             }
 
             camerasSelect.appendChild(option);
-        })
+        });
     } catch (e) {
         console.log(e);
     }
 }
 
+//데이터 정의
 async function getMedia(deviceId) {
     const initailConstrains = {
         audio: true,
-        video: { facingMode: 'user' }
+        video: {
+            facingMode: 'user'
+        }
     };
     
     const cameraConstraints = {
@@ -70,10 +73,11 @@ async function getMedia(deviceId) {
         }
     } catch (e) {
         console.log(e);
+        alert('디바이스가 존재하지 않아 진행할 수 없습니다.');
     }
 }
 
-//getEmedia();
+
 
 function handleMuteClick() {
     //console.log(myStream.getAudioTracks());
@@ -120,6 +124,7 @@ camerasSelect.addEventListener('input', handleCameraChange);
 const welcome = document.getElementById('welcome');
 const welcomeForm = welcome.querySelector('form');
 
+//화면 전환 및 데이터 불러오기
 async function initCall() {
     welcome.hidden = true;
     call.hidden = false;
@@ -127,6 +132,7 @@ async function initCall() {
     makeConnection();
 }
 
+//맨 처음 Enter room 버튼 클릭 시
 async function handleWelcomeSubmit(event) {
     event.preventDefault();
     const input = welcomeForm.querySelector('input');
